@@ -1,0 +1,20 @@
+# update linux
+
+# usage: update [-r]
+
+restart_flag=false
+
+while getopts 'r' flag; do
+  case "${flag}" in
+    r) restart_flag=true ;;
+  esac
+done
+
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get dist-upgrade
+sudo apt-get autoremove
+
+if [ "$restart_flag" = true ]; then
+    sudo shutdown -r 0
+fi
